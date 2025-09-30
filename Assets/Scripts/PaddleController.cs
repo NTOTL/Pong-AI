@@ -22,8 +22,21 @@ public class PaddleController : MonoBehaviour
 
     private void Update()
     {
-        float value = GetAxisValue();
-        MovePaddle(value);
+        if (playerId == 2 && GameManager.Instance.IsPlayerVsAI())
+        {
+            // call AI move
+            MoveAI();
+        }
+        else
+        {
+            float value = GetAxisValue();
+            MovePaddle(value);
+        }
+    }
+
+    private void MoveAI()
+    {
+        Debug.Log($"Move AI with id {playerId}");
     }
 
     private float GetAxisValue()

@@ -6,11 +6,18 @@ public class GameManager : MonoBehaviour
     int scorePlayer1, scorePlayer2;
     int winScore = 4;
     int winnerId;    
+    public PlayMode playMode;
 
     // Observer pattern
     public Action OnReset; // Event to notify observers to reset the ball and paddles
     public Action<int, int> OnScore;
     public Action<int> OnGameOver;
+
+    public enum PlayMode
+    {
+        PlayerVsPlayer,
+        PlayerVsAI
+    }
 
 
     // Singleton pattern
@@ -98,5 +105,23 @@ public class GameManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void SwitchPlayMode()
+    {
+        switch (playMode)
+        {
+            case PlayMode.PlayerVsPlayer:
+                playMode = PlayMode.PlayerVsAI;
+                break;
+            case PlayMode.PlayerVsAI:
+                playMode = PlayMode.PlayerVsPlayer;
+                break;
+        }
+    }
+
+    public bool IsPlayerVsAI()
+    {
+        return playMode == PlayMode.PlayerVsAI;
     }
 }
