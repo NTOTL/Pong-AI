@@ -15,7 +15,14 @@ public class BallController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.OnReset += ResetBall; // Receive the notification and fire event handler        
+        GameManager.Instance.OnReset += ResetBall; // Receive the notification and fire event handler
+        GameManager.Instance.OnGameOver += ResetGame;
+    }
+
+    private void ResetGame(int id)
+    {
+        transform.position = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
     }
 
     private void ResetBall()

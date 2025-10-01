@@ -173,6 +173,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4819799241947481562, guid: 0b5b6a42dce17c4449255d154c848730, type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 1081361513}
+    - target: {fileID: 4819799241947481562, guid: 0b5b6a42dce17c4449255d154c848730, type: 3}
       propertyPath: playerId
       value: 2
       objectReference: {fileID: 0}
@@ -7212,6 +7216,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4819799241947481562, guid: 0b5b6a42dce17c4449255d154c848730, type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 1081361513}
     - target: {fileID: 4819799241947481562, guid: 0b5b6a42dce17c4449255d154c848730, type: 3}
       propertyPath: playerId
       value: 1

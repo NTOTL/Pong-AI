@@ -1,13 +1,19 @@
 using System;
 using UnityEngine;
 
+
 public class PaddleController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public int playerId;
     public float moveSpeed = 2f;
+    public BallController ball;
 
-    private Vector2 startPosition;    
+    private float aiDeadZone = 2f;
+    private int direction = 0;
+
+    private Vector2 startPosition;
+
 
     private void OnEnable()
     {
@@ -25,7 +31,9 @@ public class PaddleController : MonoBehaviour
         if (playerId == 2 && GameManager.Instance.IsPlayerVsAI())
         {
             // call AI move
+            
             MoveAI();
+
         }
         else
         {
@@ -36,7 +44,15 @@ public class PaddleController : MonoBehaviour
 
     private void MoveAI()
     {
-        Debug.Log($"Move AI with id {playerId}");
+        Vector2 ballPosition = ball.transform.position;
+        if (Mathf.Abs(ballPosition.y - transform.position.y) < aiDeadZone)
+        {
+            direction = ballPosition.y > transform.position.y ? 1 : -1;
+        }
+
+        MovePaddle(direction);
+       
+        
     }
 
     private float GetAxisValue()
@@ -49,6 +65,7 @@ public class PaddleController : MonoBehaviour
                 break;
             case 2:
                 axisValue = Input.GetAxis("PaddlePlayer2");
+              
                 break;
         }
 
